@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Gravatar</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-inner">
+                <div class="front">
+                    <div class="profile-image">
+                        <img src="<%= user.gravatarImage || '/default-avatar.png' %>" alt="Profile Picture">
+                    </div>
+                    <h2>
+                        <%= user.fullName || "Anonymous" %>
+                    </h2>
+                    <p class="username">@<%= user.username || "N/A" %>
+                    </p>
+                    <button>hover me</button>
+                </div>
+                <div class="back">
+
+
+                    <p><strong>📍 Location:</strong>
+                        <%= user.location || "Unknown" %>
+                    </p>
+                    <p><strong>📧 Email:</strong> <a href="mailto:<%= user.email %>">
+                            <%= user.email %>
+                        </a></p>
+                    <p><strong>📞 Phone:</strong>
+                        <%= user.phoneNumber || "N/A" %>
+                    </p>
+                    <p><strong>📝 Bio:</strong>
+                        <%= user.bio || "No bio available." %>
+                    </p>
+
+                    <% if (user.websites && user.websites.length> 0) { %>
+                        <p><strong>🔗 Links:</strong></p>
+                        <ul class="links-list">
+                            <% user.websites.forEach(function(website) { %>
+                                <li><a href="<%= website %>" target="_blank">
+                                        <%= website %>
+                                    </a></li>
+                                <% }); %>
+                        </ul>
+                        <% } else { %>
+                            <p><strong>🔗 Links:</strong> No websites available</p>
+                            <% } %>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
